@@ -1,5 +1,15 @@
 var express = require('express');
-var db = require('./db');
+var db = require('./db/index');
+var mysql = require('mysql');
+
+db.dbConnection.connect((err) => {
+  if (err) {
+    console.log(err);
+    return;
+  } else {
+    console.log('successful connection');
+  }
+});
 
 // Middleware
 var morgan = require('morgan');
