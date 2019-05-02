@@ -1,20 +1,16 @@
 var express = require('express');
 var db = require('./db/index');
 var mysql = require('mysql');
-var Sequelize = require('sequelize');
-var db = require('./orm-schema');
 
+db.dbConnection.connect((err) => {
+  if (err) {
+    console.log(err);
+    return;
+  } else {
+    console.log('successful connection');
+  }
+});
 
-db.sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Sequelize connection successfull'); 
-  })
-  .catch((err)=>{
-    console.log(err, 'Cannot connect');
-  });
-
-  
 // Middleware
 var morgan = require('morgan');
 var parser = require('body-parser');
