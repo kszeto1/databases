@@ -29,26 +29,26 @@ module.exports = {
   users: {
     // Ditto as above
     get: function (req, res) {
-      models.users.get((err, data) => {
-        if (err) {
-          res.status(400);
-          res.end();
-        } else {
+      models.user.get()
+        .then((data) => { 
           res.status(200);
           res.send(data);
-        }
-      });
-    },
-    post: function (req, res) {
-      models.users.post(req.body[0], (err, data) => {
-        if (err) {
+        })
+        .catch((err) => {
           res.status(400);
           res.end();
-        } else {
-          res.status(200);
+        });
+    },
+    post: function (req, res) {
+      models.user.post(req.body[0])
+        .then(() => {
+          res.status(202);
           res.end('successful user post');
-        }
-      });
+        })
+        .catch(() => {
+          res.status(400);
+          res.end();
+        });
     }
   }
 };

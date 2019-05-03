@@ -24,11 +24,10 @@ var Message = sequelize.define('messages', {
 var User = sequelize.define('user', {
   id: {
     type: Sequelize.INTEGER,
-    primaryKey: true,
-    autoIncrement: true        
+    primaryKey: true 
   },
   username: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING(32),
     allowNull: false
   },
 }, { timestamps: false });
