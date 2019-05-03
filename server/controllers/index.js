@@ -27,7 +27,6 @@ module.exports = {
   },
 
   users: {
-    // Ditto as above
     get: function (req, res) {
       models.user.get()
         .then((data) => { 
